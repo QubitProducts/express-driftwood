@@ -1,0 +1,27 @@
+{
+  "name": "express-driftwood",
+  "version": "1.0.0",
+  "description": "Express middleware for logging with driftwood",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QubitProducts/express-driftwood.git"
+  },
+  "keywords": [
+    "driftwood",
+    "logging",
+    "express"
+  ],
+  "author": "Qubit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/QubitProducts/express-driftwood/issues"
+  },
+  "homepage": "https://github.com/QubitProducts/express-driftwood#readme",
+  "dependencies": {
+    "chalk": "^1.1.3"
+  }
+}
