@@ -33,3 +33,5 @@ app.listen(1119, () => {
   log.info('my-app started!')
 })
 ```
+
+![](http://i.imgur.com/nDfx9eX.png)
