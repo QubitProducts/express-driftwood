@@ -1,6 +1,6 @@
 # express-driftwood
 
-A tiny piece of express middleware for logging requests using [QubitProducts/driftwood](driftwood).
+A tiny piece of express middleware for logging requests using [QubitProducts/driftwood](https://github.com/QubitProducts/driftwood).
 
 
 ### Installation
