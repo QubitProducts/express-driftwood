@@ -48,7 +48,7 @@ module.exports = function createExpressLogger (log, options) {
   function shouldIgnore (url) {
     return options.ignore.some((pattern) => {
       if (typeof pattern === 'string') {
-        return url.indexOf(pattern) > -1
+        return url === pattern
       }
       if (pattern.test) {
         return pattern.test(url)
