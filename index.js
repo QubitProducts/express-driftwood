@@ -2,7 +2,9 @@
 
 const chalk = require('chalk')
 
-module.exports = function createExpressLogger (log) {
+module.exports = function createExpressLogger (log, options) {
+  options = parseOptions(options)
+
   return function logger (req, res, next) {
     const start = Date.now()
 
@@ -18,7 +20,7 @@ module.exports = function createExpressLogger (log) {
   function logRequest (req, res, start) {
     const url = req.originalUrl
 
-    if (/\/status/.test(url)) {
+    if (shouldIgnore(url)) {
       return
     }
 
@@ -42,4 +44,31 @@ module.exports = function createExpressLogger (log) {
 
     log[logLevel](`${req.method} ${url} ${chalk.bold[color](status)} ${chalk.grey(duration + 'ms')}`)
   }
+
+  function shouldIgnore (url) {
+    return options.ignore.some((pattern) => {
+      if (typeof pattern === 'string') {
+        return url.indexOf(pattern) > -1
+      }
+      if (pattern.test) {
+        return pattern.test(url)
+      }
+      if (typeof pattern === 'function') {
+        return pattern(url)
+      }
+      return false
+    })
+  }
+}
+
+function parseOptions (options) {
+  options = Object.assign({
+    ignore: []
+  }, options)
+
+  if (!(options.ignore instanceof Array)) {
+    options.ignore = [options.ignore]
+  }
+
+  return options
 }

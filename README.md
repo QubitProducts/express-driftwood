@@ -35,3 +35,19 @@ app.listen(1119, () => {
 ```
 
 ![](http://i.imgur.com/nDfx9eX.png)
+
+
+### Options
+
+Options can be passed as a second argument.
+
+
+### options.ignore
+
+A string, regex, function or array of the former, to match URLs that you don't want to log:
+
+```js
+{
+  ignore: ['/status', /^\/status/, (url) => url.indexOf('/status') > -1]
+}
+```
