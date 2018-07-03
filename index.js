@@ -28,7 +28,7 @@ module.exports = function createExpressLogger (log, options) {
     const duration = Date.now() - start
 
     let logLevel
-    let color
+    let color = 'white'
     if (status >= 100) {
       logLevel = 'info'
       color = 'green'
