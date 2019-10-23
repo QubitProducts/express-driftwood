@@ -18,10 +18,14 @@ module.exports = function createExpressLogger (log, options) {
   }
 
   function logRequest (req, res, start) {
-    const url = req.originalUrl
+    let url = req.originalUrl
 
     if (shouldIgnore(url)) {
       return
+    }
+
+    if (options.rewrite) {
+      url = options.rewrite(url)
     }
 
     const status = res.statusCode
@@ -63,7 +67,8 @@ module.exports = function createExpressLogger (log, options) {
 
 function parseOptions (options) {
   options = Object.assign({
-    ignore: []
+    ignore: [],
+    rewrite: null
   }, options)
 
   if (!(options.ignore instanceof Array)) {

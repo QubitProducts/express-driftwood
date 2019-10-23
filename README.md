@@ -51,3 +51,13 @@ A string, regex, function or array of the former, to match URLs that you don't w
   ignore: ['/status', /^\/status/, (url) => url.indexOf('/status') > -1]
 }
 ```
+
+### options.rewrite
+
+A function that rewrites urls, e.g. to remove sensitive data:
+
+```js
+{
+  rewrite: (url) => url.replace('secret', '*****')
+}
+```
